@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+
+	<style>
+	body, html {
+		width: 100%;
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		background: linear-gradient(to bottom , red, yellow);
+		font-family: "Microsoft Yahei";
+	}
+	</style>
+</head>
+<body>
+<button>show</button>
+	<script src="dist/mlayer.js"></script>
+	<script>
+	document.querySelector("button").onclick = function () {
+		mlayer.open({
+			content:"确定要删除吗？删除后将不能恢复", 
+			title: "提示",
+			btns: "确定",
+		});
+	}
+	</script>
+</body>
+</html>
