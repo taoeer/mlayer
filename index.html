@@ -59,9 +59,19 @@
 
 	document.querySelector("#msg").onclick = function () {
 		mlayer.open({
-			content:"点击成功", 
-			type: 2
-		});
+			title: "提示",
+			btns: "确定",
+			shadowClose: false,
+			content: "下一个弹框将在4s后关闭",
+			end: function () {
+				mlayer.open({
+					content:"点击成功", 
+					type: 2,
+					time: 4000,
+				});
+			}
+		})
+		
 	};
 	</script>
 </body>

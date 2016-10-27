@@ -89,7 +89,7 @@ require("./mlayer.less");
 		let settings = this.settings;
 
 		if (settings.time) {
-			timer[this.index] = setTimeout(layer.close, settings.time, this);
+			timer[this.index] = setTimeout(mlayer.close, settings.time, this);
 		}
 
 		this.shadowEle = $(".layer-mask", this.ele)[0];
