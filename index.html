@@ -15,19 +15,54 @@
 		background: linear-gradient(to bottom , red, yellow);
 		font-family: "Microsoft Yahei";
 	}
+	button {
+		line-height: 3;
+		-webkit-appearance: none;
+		background: none;
+		border: none;
+		width: 100%;
+		margin-bottom: 20px;
+		background: orange;
+	}
 	</style>
 </head>
 <body>
-<button>show</button>
+	<button id="alert">show alert</button>
+	<button id="confirm">show confirm</button>
+	<button id="load">show load</button>
+	<button id="msg">show msg</button>
+
+
 	<script src="dist/mlayer.js"></script>
 	<script>
-	document.querySelector("button").onclick = function () {
+	document.querySelector("#alert").onclick = function () {
 		mlayer.open({
 			content:"确定要删除吗？删除后将不能恢复", 
 			title: "提示",
 			btns: "确定",
 		});
-	}
+	};
+
+	document.querySelector("#confirm").onclick = function () {
+		mlayer.open({
+			content:"确定要删除吗？删除后将不能恢复", 
+			title: "提示",
+			btns: ["确定","取消"],
+		});
+	};
+
+	document.querySelector("#load").onclick = function () {
+		mlayer.open({
+			type: 3
+		});
+	};
+
+	document.querySelector("#msg").onclick = function () {
+		mlayer.open({
+			content:"点击成功", 
+			type: 2
+		});
+	};
 	</script>
 </body>
 </html>
