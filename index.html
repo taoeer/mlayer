@@ -35,44 +35,9 @@
 
 	<script src="dist/mlayer.js"></script>
 	<script>
-	document.querySelector("#alert").onclick = function () {
-		mlayer.open({
-			content:"确定要删除吗？删除后将不能恢复", 
-			title: "提示",
-			btns: "确定",
-		});
-	};
-
-	document.querySelector("#confirm").onclick = function () {
-		mlayer.open({
-			content:"确定要删除吗？删除后将不能恢复", 
-			title: "提示",
-			btns: ["确定","取消"],
-		});
-	};
-
-	document.querySelector("#load").onclick = function () {
-		mlayer.open({
-			type: 3
-		});
-	};
-
-	document.querySelector("#msg").onclick = function () {
-		mlayer.open({
-			title: "提示",
-			btns: "确定",
-			shadowClose: false,
-			content: "下一个弹框将在4s后关闭",
-			end: function () {
-				mlayer.open({
-					content:"点击成功", 
-					type: 2,
-					time: 4000,
-				});
-			}
-		})
-		
-	};
+	mlayer.confirm("dfsf")
+	mlayer.alert("sdfasf34f34136")
+	mlayer.load({time: 5000})
 	</script>
 </body>
 </html>

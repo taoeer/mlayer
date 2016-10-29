@@ -52,6 +52,7 @@ require("./mlayer.less");
 		}
 
 		if (settings.type === 3) {
+			mlayer.closeAll(3);
 			let loadEle = "<div class='layer-loading layer-fadeIn'></div>";
 			this.layerBox.innerHTML = shadeEle + loadEle;
 			this.show();
@@ -80,7 +81,7 @@ require("./mlayer.less");
 
 		document.body.appendChild(this.layerBox);
 		this.ele = $("#" + clsName + index)[0];
-
+		index ++;
 		this.action();
 	}
 	
@@ -146,6 +147,44 @@ require("./mlayer.less");
 			layer.ele.innerHTML = "";
 			document.body.removeChild(layer.ele);
 			layer.settings.end(layer);
+		},
+		closeAll (type) {
+			let eles = $("." + clsName + (type?type:""));
+			for(let i = 0 ; i < eles.length; i ++) {
+				eles[i].innnerHTML = "";
+				eles[i].parentNode.removeChild(eles[i]);
+			}
+		},
+		alert (content, opts, yes) {
+			let type = typeof opts === "function";
+			if (type) yes = opts;
+			return new mLayer({
+				type: 1,
+				title: "信息",
+				content: content,
+				btns: "确定",
+				yes: yes || loop
+			});
+		},
+		confirm (content, opts, yes, cancel) {
+			let type = typeof opts === "function";
+			if (type) {
+				cancel = yes;
+				yes = opts;
+			}
+			return new mLayer({
+				type: 1,
+				title: "信息",
+				content: content,
+				btns: ["确定","取消"],
+				yes: yes || loop,
+				cancel: cancel || loop
+			});
+		},
+		load (opts) {
+			opts.type = 3;
+			opts.shadowClose = false;
+			return new mLayer(opts);
 		}
 	}
 })(window, document);
