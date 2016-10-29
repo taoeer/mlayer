@@ -12,6 +12,13 @@ require("./mlayer.less");
 	let index = 0 ,
 		clsName = "layer",
 		loop = function () {},
+		extend = function (target, opts) {
+			for (let key in opts) {
+				target[key] = opts[key];
+			}
+
+			return target;
+		},
 		timer = {};
 
 	function mLayer(opts) {
@@ -24,9 +31,8 @@ require("./mlayer.less");
 			cancel: loop,
 			end: loop,
 		}
-		for (let key in opts) {
-			this.settings[key] = opts[key];
-		}
+
+		extend(this.settings, opts)
 		this.render();
 	}
 
@@ -155,33 +161,23 @@ require("./mlayer.less");
 				eles[i].parentNode.removeChild(eles[i]);
 			}
 		},
-		alert (content, opts, yes) {
-			let type = typeof opts === "function";
-			if (type) yes = opts;
-			return new mLayer({
+		alert (content, opts) {
+			return new mLayer(extend({
 				type: 1,
 				title: "信息",
 				content: content,
 				btns: "确定",
-				yes: yes || loop,
 				shadowClose: false
-			});
+			}, opts));
 		},
-		confirm (content, opts, yes, cancel) {
-			let type = typeof opts === "function";
-			if (type) {
-				cancel = yes;
-				yes = opts;
-			}
-			return new mLayer({
+		confirm (content, opts) {
+			return new mLayer(extend({
 				type: 1,
 				title: "信息",
 				content: content,
 				btns: ["确定","取消"],
-				yes: yes || loop,
-				cancel: cancel || loop,
 				shadowClose: false
-			});
+			}, opts));
 		},
 		load (opts) {
 			opts = opts || {}

@@ -38,12 +38,20 @@
 	document.body.addEventListener("click", function (e) {
 		if (e.target.nodeName.toLowerCase() === 'button' && e.target.parentNode === document.body) {
 			if (e.target.id === "load")  {
-				mlayer[e.target.id]({time: 3000});
+				mlayer.alert("将要显示load动画", {
+					yes: function () {
+						mlayer.alert("load 动画将在3秒后关闭！" ,{
+							yes: function () {
+								mlayer[e.target.id]({time: 3000});
+							}
+						});
+					}
+				});
 				return;
 			}
 
 			if (e.target.id === "msg") {
-				mlayer[e.target.id](e.target.innerHTML, 3000);
+				mlayer[e.target.id](e.target.innerHTML);
 				return;
 			}
 			mlayer[e.target.id](e.target.innerHTML);
