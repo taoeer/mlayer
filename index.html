@@ -35,9 +35,21 @@
 
 	<script src="dist/mlayer.js"></script>
 	<script>
-	mlayer.confirm("dfsf")
-	mlayer.alert("sdfasf34f34136")
-	mlayer.load({time: 5000})
+	document.body.addEventListener("click", function (e) {
+		if (e.target.nodeName.toLowerCase() === 'button' && e.target.parentNode === document.body) {
+			if (e.target.id === "load")  {
+				mlayer[e.target.id]({time: 3000});
+				return;
+			}
+
+			if (e.target.id === "msg") {
+				mlayer[e.target.id](e.target.innerHTML, 3000);
+				return;
+			}
+			mlayer[e.target.id](e.target.innerHTML);
+			
+		}
+	})
 	</script>
 </body>
 </html>

@@ -163,7 +163,8 @@ require("./mlayer.less");
 				title: "信息",
 				content: content,
 				btns: "确定",
-				yes: yes || loop
+				yes: yes || loop,
+				shadowClose: false
 			});
 		},
 		confirm (content, opts, yes, cancel) {
@@ -178,13 +179,24 @@ require("./mlayer.less");
 				content: content,
 				btns: ["确定","取消"],
 				yes: yes || loop,
-				cancel: cancel || loop
+				cancel: cancel || loop,
+				shadowClose: false
 			});
 		},
 		load (opts) {
+			opts = opts || {}
 			opts.type = 3;
 			opts.shadowClose = false;
 			return new mLayer(opts);
+		},
+		msg (content, time) {
+			return new mLayer({
+				type: 2,
+				shadowClose: false,
+				content: content||'',
+				time: time || 4000,
+				shadow: false
+			});
 		}
 	}
 })(window, document);
