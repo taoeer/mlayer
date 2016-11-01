@@ -1,6 +1,6 @@
 # mlayer
 自己开发的移动端弹层插件，css和图片已经内置！
-![](mlayer/demo.gif)
+![](https://raw.githubusercontent.com/taoeer/mlayer/master/demo.gif)
 
 # 使用
 
